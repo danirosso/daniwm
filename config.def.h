@@ -61,6 +61,7 @@ static const Layout layouts[] = {
 static const char *volumep[] = { "wpctl", "set-volume","-l", "1.1", "@DEFAULT_SINK@", "0.05+", NULL };
 static const char *volumem[] = { "wpctl", "set-volume", "@DEFAULT_SINK@", "0.05-", NULL };
 static const char *flameshot[] = { "flameshot", "gui", NULL};
+static const char *librewolf[] = { "librewolf", NULL};
 /*-----------------------------------------------------------------------------*/
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
@@ -68,9 +69,10 @@ static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY|ShiftMask,             XK_r,       spawn,          {.v = flameshot} },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = flameshot} },
 	{ MODKEY,                       XK_F9,     spawn,          {.v = volumep } },
 	{ MODKEY,                       XK_F8,     spawn,          {.v = volumem } }, 
+	{ MODKEY|ShiftMask,            XK_p,      spawn,          {.v = librewolf} },
 	/*------------------------------------------------------------------*/
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
