@@ -980,7 +980,7 @@ grabkeys(void)
 void
 incnmaster(const Arg *arg)
 {
-	selmon->nmaster = MAX(selmon->nmaster + arg->i, 0);
+	selmon->nmaster = MIN(MAX(selmon->nmaster + arg->i, minnmaster), maxnmaster);
 	arrange(selmon);
 }
 
