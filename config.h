@@ -29,6 +29,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Nsxiv",    NULL,          NULL,       0,          1,           -1 },
 	{ "nchat",    NULL,          NULL,       2,          1,            1 },
+	{ "gurk",     NULL,          NULL,       2,          1,            1 },
 	{ "librewolf",NULL,          "Picture-in-Picture", 0,1,		  -1 },
 };
 
