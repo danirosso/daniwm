@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 4;        /* border pixel of windows */
 static const unsigned int snap      = 16;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -28,7 +28,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Nsxiv",    NULL,          NULL,       0,          1,           -1 },
-	{ "nchat",    NULL,          NULL,       2,          1,            1 },
+	{ "whatscli", NULL,          NULL,       2,          1,            1 },
 	{ "gurk",     NULL,          NULL,       2,          1,            1 },
 	{ "librewolf",NULL,          "Picture-in-Picture", 0,1,		  -1 },
 };
@@ -40,7 +40,7 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 static const int refreshrate = 120;  /* refresh rate (per second) for client move/resize */
 static const int maxnmaster = 2; /* maximum number of masters */
-static const int minnmaster = 1; /* number of masters as default */
+static const int minnmaster = 0; /* minimum numer of masters*/
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
