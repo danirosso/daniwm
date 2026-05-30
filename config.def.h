@@ -62,8 +62,9 @@ static const Layout layouts[] = {
 /* commands */
 static const char *volumep[] = { "wpctl", "set-volume","-l", "1.1", "@DEFAULT_SINK@", "0.05+", NULL };
 static const char *volumem[] = { "wpctl", "set-volume", "@DEFAULT_SINK@", "0.05-", NULL };
-static const char *flameshot[] = { "flameshot", "gui", NULL};
 static const char *librewolf[] = { "librewolf", NULL};
+static const char *maimclip[] = { "/bin/sh", "-c", "maim -s -b 4 -c 0,0.33,0.46 | xclip -selection clipboard -t image/png", NULL}; 
+
 /*-----------------------------------------------------------------------------*/
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
@@ -71,7 +72,7 @@ static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = flameshot} },
+	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = maimclip } },
 	{ MODKEY,                       XK_F9,     spawn,          {.v = volumep } },
 	{ MODKEY,                       XK_F8,     spawn,          {.v = volumem } }, 
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = librewolf} },
