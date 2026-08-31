@@ -28,8 +28,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Nsxiv",    NULL,          NULL,       0,          1,           -1 },
-	{ "whatscli", NULL,          NULL,       2,          1,            1 },
-	{ "gurk",     NULL,          NULL,       2,          1,            1 },
+	{ "nchat",    NULL,          NULL,       1 << 5,     1,            1 },
 	{ "librewolf",NULL,          "Picture-in-Picture", 0,1,		  -1 },
 };
 
@@ -60,21 +59,23 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *volumep[] = { "wpctl", "set-volume","-l", "1.1", "@DEFAULT_SINK@", "0.05+", NULL };
-static const char *volumem[] = { "wpctl", "set-volume", "@DEFAULT_SINK@", "0.05-", NULL };
+static const char *volumep[]   = { "wpctl", "set-volume","-l", "1.1", "@DEFAULT_SINK@", "0.02+", NULL };
+static const char *volumem[]   = { "wpctl", "set-volume", "@DEFAULT_SINK@", "0.02-", NULL };
+static const char *volumez[]   = { "wpctl", "set-volume", "@DEFAULT_SINK@", "1.10-", NULL };
 static const char *librewolf[] = { "librewolf", NULL};
-static const char *maimclip[] = { "/bin/sh", "-c", "maim -s -b 4 -c 0,0.33,0.46 | xclip -selection clipboard -t image/png", NULL}; 
+static const char *maimclip[]  = { "/bin/sh", "-c", "maim -s -b 4 -c 0,0.33,0.46 | xclip -selection clipboard -t image/png", NULL}; 
 
 /*-----------------------------------------------------------------------------*/
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "st", "-e", "vim", "-c", ":term ++curwin",  NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = maimclip } },
 	{ MODKEY,                       XK_F9,     spawn,          {.v = volumep } },
 	{ MODKEY,                       XK_F8,     spawn,          {.v = volumem } }, 
+	{ MODKEY|ShiftMask,             XK_F8,     spawn,          {.v = volumez } }, 
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = librewolf} },
 	/*------------------------------------------------------------------*/
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
